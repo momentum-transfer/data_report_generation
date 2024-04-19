@@ -1,0 +1,163 @@
+\documentclass[oneside,a4paper,11pt,explicit]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{kultem}
+\usepackage[english]{babel}
+\usepackage{xspace}
+% \usepackage[dutch]{babel}
+
+%% INSERT YOUR PACKAGES HERE
+\usepackage[accsupp]{axessibility}  % improves PDF readability for those with disabilities.
+\usepackage[hidelinks]{hyperref}
+\usepackage{lipsum}
+\usepackage{listings}
+
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% User Entry Fields %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Name of the user:
+
+\def\userName{Didier Blanchard}
+
+% Date of the experiment:
+\def\experimentDate{9th April 2024}
+
+% IF TS-PDF
+\def\dataType{total scattering measurements plus processed pair distribution functions}
+
+%% TITLE PAGE OPTIONS (only works with \maketitle is called in the document)
+\title{Momentum Transfer}
+\subtitle{A venture of Chemovator GmbH}
+
+\date{\today}
+
+\author{Measurements were performed on a series of samples for \userName\ using beamline ID31 at the ESRF on \experimentDate. The contents here include \dataType.}
+
+\professors{Bernd Hinrichsen \\
+{\normalfont bernd.hinrichsen@momentum-transfer.com} \\
+\& \\
+Maxwell W. Terban \\
+{\normalfont max.terban@momentum-transfer.com}}
+
+\assessors{\url{https://momentum-transfer.com/}}
+
+
+%% DOCUMENT
+\begin{document}
+\maketitle
+\newpage
+
+\section{Experiment}
+
+Total scattering measurements~\cite{terba;cr21,egami;b;utbp03} were performed at beamline ID31 at the European Synchrotron Radiation Facility (ESRF). The sample powders were loaded into cylindrical slots (approx. 1~mm thickness) held between Kapton windows in a high-throughput sample holder. Each sample was measured in a transmission with an incident X-ray energy of 75.00 keV ($\lambda = 0.1653$ \AA). Measured intensities were collected using a Pilatus CdTe 2M detector ($1679 \times 1475$ pixels, $172 \times 172$ $\mu$m$^2$ each) positioned with the incident beam in the corner of the detector. The sample-to-detector distance was approximately 0.3~m for the total scattering measurement. Background measurements for the empty windows were measured and subtracted. NIST SRM 660b (LaB$_6$) was used for geometry calibration performed with the software pyFAI followed by image integration including a flat-field, geometry, solid-angle, and polarization corrections.\\
+
+
+\section{Acknowledgement}
+
+If measured data are used in a publication, please include the following acknowledgement:
+\begin{quote}
+We acknowledge the European Synchrotron Radiation Facility (ESRF) for provision of synchrotron radiation facilities and Momentum Transfer for facilitating the measurements. Jakub Drnec is thanked for assistance and support in using beamline ID31. The measurement setup was developed with funding from the European Union’s Horizon 2020 research and innovation program under the STREAMLINE project (grant agreement ID 870313).
+ 
+\end{quote}
+
+\section{Data}
+\kulbox[10pt]{The data for the measurements are summarized below:}
+\begin{itemize}
+    \item \textbf{High\_Qmax} : measurements using a short sample-to-detector distance
+    \begin{itemize}
+
+        \item \textbf{.2th.xye} : as-integrated onto 2$\theta$ binning
+        \item \textbf{.2th.xye\_xcorr.xye} : as-integrated onto 2$\theta$ binning and corrected for angular offset
+        \item \textbf{BKGD\_SUBTRACTED.xye} : as-integrated onto 2$\theta$ binning and background subtracted
+        \item \textbf{BKGD\_SUBTRACTED.xye\_xcorr.xye} : as-integrated onto 2$\theta$ binning, corrected for angular offset, and background subtracted
+        \begin{itemize}
+            \item \textbf{pdf\_Qmax\_15} : PDF generated using $Q_{max}=15.0$~\AA$^{-1}$
+                \begin{itemize}
+                    \item \textbf{lorch} : PDF re-processed using a Lorch modification function, i.e. $M(Q)\times F(Q)$
+                \end{itemize}
+            \item \textbf{pdf\_Qmax\_20} : PDF generated using $Q_{max}=20.0$~\AA$^{-1}$
+                \begin{itemize}
+                    \item \textbf{lorch} : PDF re-processed using a Lorch modification function, i.e. $M(Q)\times F(Q)$
+                \end{itemize}
+            \item \textbf{pdf\_Qmax\_25} : PDF generated using $Q_{max}=25.0$~\AA$^{-1}$
+                \begin{itemize}
+                    \item \textbf{lorch} : PDF re-processed using a Lorch modification function, i.e. $M(Q)\times F(Q)$
+                \end{itemize}
+            \item \textbf{pdf\_Qmax\_30} : PDF generated using $Q_{max}=30.0$~\AA$^{-1}$
+                \begin{itemize}
+                    \item \textbf{lorch} : PDF re-processed using a Lorch modification function, i.e. $M(Q)\times F(Q)$
+                \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+\section{Assessment of standards}
+
+\kulbox[10pt]{Rietveld refinements of LaB$_6$ NIST SRM 660b standard performed in TOPAS~\cite{coelho;jac18} for characterization of the instrumental profile -- see Supporting Files for .inp file. \\
+
+LaB$_6$ NIST SRM 660b (high $Q_{max}$): $R_w=1.5$\%\ (NIST certificate 4.15689~\AA) }
+
+The instrumental profile is defined in the standard .inp file without offset correction, as below:
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.49\textwidth]{../../extra_files/reference_refinements/High-q_out.pdf}
+    \caption{The results of the Rietveld refinements.}
+    \label{fig:example}
+\end{figure}
+
+\kulbox[10pt]{High $Q_{max}$ measurement:}
+
+\begin{quote}
+
+    \texttt{macro x\_offset\_eqtn\_1~a\_coef\_1*((Rad~2*Th)){\string^}2 + b\_coef\_1*((Rad~2*Th)) +  c\_coef\_1} \\
+    \texttt{prm~!a\_coef\_1~{-4.74121911e-05}} \\
+    \texttt{prm~!b\_coef\_1~{0.000577465051}} \\
+    \texttt{prm~!c\_coef\_1~0}
+            
+    \texttt{GeometricIntensityFactorFlat2DDetector} \\
+    \texttt{ReflectionProbability} \\
+    \texttt{LorentzCorrection}
+         
+    {\color{red} 'Note: this offset macro should not be used with 2Th\_corrected data.} \\
+    '\texttt{th2\_offset = x\_offset\_eqtn\_1;} \\
+    {\color{red} {'--------} }
+  
+    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm, , , 0.027502163)} \\
+    \texttt{User\_Defined\_Dependence\_Convolution(lor\_fwhm,  , , 0.00138234991)} \\
+    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm,  Tan(Th)    , , 0.382290678)} \\
+    \texttt{User\_Defined\_Dependence\_Convolution(lor\_fwhm,  Tan(Th)    , , 0.0175513434)}  
+        
+    \texttt{lam} \\
+    \texttt{ymin\_on\_ymax~1e-04} \\
+    \texttt{la~1~lo~!WavelengthID31~0.16531226319520955~lh~0.001} \\
+    \texttt{convolution\_step 3}
+
+\end{quote}
+
+\kulbox[10pt]{PDF refinements of the LaB$_6$ NIST SRM 660b and Silicon NIST SRM 640c reference standards were performed using PDFgui~\cite{farro;jpcm07} to verify the quality of the real-space data. The resolution parameters refined to values of $Q_{damp}=$0.01~\AA$^{-1}$ and $Q_{broad}=$0.015~\AA$^{-1}$. \\
+
+LaB$_6$ NIST SRM 660b: $R_w=8.58$\%, $a=4.1568$~\AA\ (NIST certificate 4.15689~\AA)\\
+Silicon NIST SRM 640c: $R_w=6.11$\%, $a=5.4320$~\AA\ (NIST certificate 5.4311946~\AA) }
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.49\textwidth]{../../extra_files/reference_refinements/LaB6_PDF_fit.pdf}
+    \includegraphics[width=0.49\textwidth]{../../extra_files/reference_refinements/Silicon_PDF_fit.pdf}
+    \caption{The results of the refinements over a range of 1--100~\AA\ for the two reference standards with a $Q_{max}=25$ and $30$~\AA$^{-1}$ respectively are given.}
+    \label{fig:example}
+\end{figure}
+
+\newpage
+
+\section{Overview of the measurements}
+
+
+Preliminary PDF data were processed in an automated way using PDFgetX3~\cite{peter;jac03,billi;jpcm13,juhas;jac13} with $Q_{max}=$30, 25, 20, and 15~\AA$^{-1}$. Then the data were reprocessed using a Lorch modification function~\cite{lorch;jppcs69} to suppress termination effects and contributions from high frequency noise. The small-angle scattering intensities were extrapolated from $Q_{min}=0.326$~\AA$^{-1}$ to 0. Compositions used for the samples were used from the compounds given in the sample spreadsheet. The data can be rapidly reprocessed given new composition details or other desired modifications to the processing parameters. In the following plots, the dotted line in the plots of $F(Q)$ represent the $Q_{min}$ value and the grey highlighted region in the plots of $G(r)$ represent the unreliable part of the low-$r$ range due to the rpoly value used in PDFgetX3.\\
+
+
