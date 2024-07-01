@@ -1,4 +1,4 @@
-\bibliography{references}
+\bibliography{/Users/didier/ESRF_data/20240618/20240618/PROCESSED_DATA/streamline/report_file/references.bib}
 
 
 \end{document}

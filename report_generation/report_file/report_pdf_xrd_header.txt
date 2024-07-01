@@ -23,7 +23,7 @@
 \def\userName{Didier Blanchard}
 
 % Date of the experiment:
-\def\experimentDate{9th April 2024}
+\def\experimentDate{18th April 2024}
 
 % Types of data included:
 % IF BOTH
@@ -63,7 +63,7 @@ If measured data are used in a publication, please include the following acknowl
 We acknowledge the European Synchrotron Radiation Facility (ESRF) for provision of synchrotron radiation facilities and Momentum Transfer for facilitating the measurements. Jakub Drnec is thanked for assistance and support in using beamline ID31. The measurement setup was developed with funding from the European Union’s Horizon 2020 research and innovation program under the STREAMLINE project (grant agreement ID 870313).
  
 \end{quote}
-
+\newpage
 \section{Data}
 \kulbox[10pt]{The data for the measurements are summarized below:}
 \begin{itemize}
@@ -108,29 +108,32 @@ We acknowledge the European Synchrotron Radiation Facility (ESRF) for provision 
 
 \kulbox[10pt]{Rietveld refinements of LaB$_6$ NIST SRM 660b standard performed in TOPAS~\cite{coelho;jac18} for characterization of the instrumental profile -- see Supporting Files for .inp file. \\
 
-LaB$_6$ NIST SRM 660b (high $Q_{res}$): $R_w=5.27$\%\ (NIST certificate 4.15689~\AA) \\
-LaB$_6$ NIST SRM 660b (high $Q_{max}$): $R_w=1.5$\%\ (NIST certificate 4.15689~\AA) }
+For the High $Q_{res}$ measurement: $R_w=4.21 $\%, $a=4.15689$~\AA\ (NIST certificate 4.15689~\AA)\\
+For the High $Q_{max}$ measurement: $R_w=1.38 $\%, $a=4.15689$~\AA\ (NIST certificate 4.15689~\AA)\\
+ }
 
 The instrumental profile is defined in the standard .inp file without offset correction, as below:
 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.49\textwidth]{../../extra_files/reference_refinements/High-res_out.pdf}
-    \includegraphics[width=0.49\textwidth]{../../extra_files/reference_refinements/High_q_out.pdf}
+    \includegraphics[width=0.49\textwidth]{/Users/didier/ESRF_data/20240618/20240618/PROCESSED_DATA/extra_files/references_refinements/rietveld_qmax.pdf}
+    \includegraphics[width=0.49\textwidth]{/Users/didier/ESRF_data/20240618/20240618/PROCESSED_DATA/extra_files/references_refinements/rietveld_qres.pdf}
     \caption{The results of the Rietveld refinements.}
-    \label{fig:example}
+    %\label{fig:example}
 \end{figure}
 
 
 \kulbox[10pt]{High $Q_{res}$ measurement:}
 
 \begin{quote}
-
-    \texttt{macro x\_offset\_eqtn\_1~a\_coef\_1*((Rad~2*Th)){\string^}2 + b\_coef\_1*((Rad~2*Th)) +  c\_coef\_1} \\
-    \texttt{prm~!a\_coef\_1~{-4.28975539e-06}} \\
-    \texttt{prm~!b\_coef\_1~{2.32221442e-05}} \\
-    \texttt{prm~!c\_coef\_1~0}
+    {\small
+    \texttt{macro x\_offset\_eqtn\_1~a\_coef\_1*((Rad 2*Th)\^{}3) + b\_coef\_1*((Rad 2*Th)\^{}2) + c\_coef\_1*((Rad 2*Th)) +  d\_coef\_1} \\
+    \texttt{prm~!a\_coef\_1~{4.96391258e-06}} \\
+    \texttt{prm~!b\_coef\_1~{-8.05929833e-05}} \\
+    \texttt{prm~!c\_coef\_1~{0.00028542788}}\\
+    \texttt{prm~!d\_coef\_1~{0}}\\
+    
             
     \texttt{GeometricIntensityFactorFlat2DDetector} \\
     \texttt{ReflectionProbability} \\
@@ -140,26 +143,28 @@ The instrumental profile is defined in the standard .inp file without offset cor
     '\texttt{th2\_offset = x\_offset\_eqtn\_1;} \\
     {\color{red} {'--------} }
   
-    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm, , , 0.0052471725)} \\
-    \texttt{User\_Defined\_Dependence\_Convolution(lor\_fwhm,  , , 0.000463290013)} \\
-    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm,  Tan(Th)    , , 0.141714789)} \\
+    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm, , , 0.00504936985)} \\
+    \texttt{User\_Defined\_Dependence\_Convolution(lor\_fwhm,  , , 0.00058485611)} \\
+    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm,  Tan(Th)    , , 0.081575265)} \\
     \texttt{User\_Defined\_Dependence\_Convolution(lor\_fwhm,  Tan(Th)    , , 0.0001)}  
         
     \texttt{lam} \\
     \texttt{ymin\_on\_ymax~1e-04} \\
-    \texttt{la~1~lo~!WavelengthID31~0.16531226319520955~lh~0.001} \\
+    \texttt{la~1~lo~!WavelengthID31~0.16465364860080634~lh~0.001} \\
     \texttt{convolution\_step 3}
-
+    }
 \end{quote}
 
 \kulbox[10pt]{High $Q_{max}$ measurement:}
 
 \begin{quote}
 
-    \texttt{macro x\_offset\_eqtn\_1~a\_coef\_1*((Rad~2*Th)){\string^}2 + b\_coef\_1*((Rad~2*Th)) +  c\_coef\_1} \\
-    \texttt{prm~!a\_coef\_1~{-4.74121911e-05}} \\
-    \texttt{prm~!b\_coef\_1~{0.000577465051}} \\
-    \texttt{prm~!c\_coef\_1~0}
+    {\small
+    \texttt{macro x\_offset\_eqtn\_1~a\_coef\_1*((Rad 2*Th)\^{}3) + b\_coef\_1*((Rad 2*Th)\^{}2) + c\_coef\_1*((Rad 2*Th)) +  d\_coef\_1} \\
+    \texttt{prm~!a\_coef\_1~{1.01787305e-06}} \\
+    \texttt{prm~!b\_coef\_1~{-7.37692414e-05}} \\
+    \texttt{prm~!c\_coef\_1~{0.000627336051}} \\
+    \texttt{prm~!d\_coef\_1~{0}}\\
             
     \texttt{GeometricIntensityFactorFlat2DDetector} \\
     \texttt{ReflectionProbability} \\
@@ -169,30 +174,34 @@ The instrumental profile is defined in the standard .inp file without offset cor
     '\texttt{th2\_offset = x\_offset\_eqtn\_1;} \\
     {\color{red} {'--------} }
   
-    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm, , , 0.027502163)} \\
-    \texttt{User\_Defined\_Dependence\_Convolution(lor\_fwhm,  , , 0.00138234991)} \\
-    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm,  Tan(Th)    , , 0.382290678)} \\
-    \texttt{User\_Defined\_Dependence\_Convolution(lor\_fwhm,  Tan(Th)    , , 0.0175513434)}  
+    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm, , , 0.0268012272)} \\
+    \texttt{User\_Defined\_Dependence\_Convolution(lor\_fwhm,  , , 0.00159190288)} \\
+    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm,  Tan(Th)    , , 0.386352523)} \\
+    \texttt{User\_Defined\_Dependence\_Convolution(lor\_fwhm,  Tan(Th)    , , 0.0145726015)}  
         
     \texttt{lam} \\
     \texttt{ymin\_on\_ymax~1e-04} \\
-    \texttt{la~1~lo~!WavelengthID31~0.16531226319520955~lh~0.001} \\
+    \texttt{la~1~lo~!WavelengthID31~0.16465364860080634~lh~0.001} \\
     \texttt{convolution\_step 3}
+    }
 
 \end{quote}
+\newpage
 
 \kulbox[10pt]{PDF refinements of the LaB$_6$ NIST SRM 660b and Silicon NIST SRM 640c reference standards were performed using PDFgui~\cite{farro;jpcm07} to verify the quality of the real-space data. The resolution parameters refined to values of $Q_{damp}=$0.01~\AA$^{-1}$ and $Q_{broad}=$0.015~\AA$^{-1}$. \\
 
-LaB$_6$ NIST SRM 660b: $R_w=8.58$\%, $a=4.1568$~\AA\ (NIST certificate 4.15689~\AA)\\
-Silicon NIST SRM 640c: $R_w=6.11$\%, $a=5.4320$~\AA\ (NIST certificate 5.4311946~\AA)}
+LaB$_6$ NIST SRM 660b: $R_w=8.76$\%, $a=4.1569$~\AA\ (NIST certificate 4.15689~\AA)\\
+Silicon NIST SRM 640c: $R_w=5.14$\%, $a=5.4327$~\AA\ (NIST certificate 5.4311946~\AA) }
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.49\textwidth]{../../extra_files/reference_refinements/LaB6_PDF_fit.pdf}
-    \includegraphics[width=0.49\textwidth]{../../extra_files/reference_refinements/Silicon_PDF_fit.pdf}
+    \includegraphics[width=0.49\textwidth]{/Users/didier/ESRF_data/20240618/20240618/PROCESSED_DATA/extra_files/references_refinements/LaB6_PDF_fit.pdf}
+    \includegraphics[width=0.49\textwidth]{/Users/didier/ESRF_data/20240618/20240618/PROCESSED_DATA/extra_files/references_refinements/Silicon_PDF_fit.pdf}
     \caption{The results of the refinements over a range of 1--100~\AA\ for the two reference standards with a $Q_{max}=25$ and $30$~\AA$^{-1}$ respectively are given.}
-    \label{fig:example}
+    %\label{fig:example}
 \end{figure}
+
+\newpage
 
 \newpage
 

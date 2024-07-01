@@ -23,7 +23,7 @@
 \def\userName{Didier Blanchard}
 
 % Date of the experiment:
-\def\experimentDate{9th April 2024}
+\def\experimentDate{18th June 2024}
 
 % Types of data included:
 % IF HR-XRPD
@@ -52,8 +52,7 @@ Maxwell W. Terban \\
 \newpage
 
 \section{Experiment}
-High-resolution synchrotron X-ray diffraction
-~\cite{terba;cr21,egami;b;utbp03} were performed at beamline ID31 at the European Synchrotron Radiation Facility (ESRF). The sample powders were loaded into cylindrical slots (approx. 1~mm thickness) held between Kapton windows in a high-throughput sample holder. Each sample was measured in a transmission with an incident X-ray energy of 75.00 keV ($\lambda = 0.1653$ \AA). Measured intensities were collected using a Pilatus CdTe 2M detector ($1679 \times 1475$ pixels, $172 \times 172$ $\mu$m$^2$ each) positioned with the incident beam in the corner of the detector. The sample-to-detector distance was approximately 1.5~m for the high-resolution measurements
+High-resolution synchrotron X-ray diffraction were performed at beamline ID31 at the European Synchrotron Radiation Facility (ESRF). The sample powders were loaded into cylindrical slots (approx. 1~mm thickness) held between Kapton windows in a high-throughput sample holder. Each sample was measured in a transmission with an incident X-ray energy of 75.00 keV ($\lambda = 0.1653$ \AA). Measured intensities were collected using a Pilatus CdTe 2M detector ($1679 \times 1475$ pixels, $172 \times 172$ $\mu$m$^2$ each) positioned with the incident beam in the corner of the detector. The sample-to-detector distance was approximately 1.5~m for the high-resolution measurements
 Background measurements for the empty windows were measured and subtracted. NIST SRM 660b (LaB$_6$) was used for geometry calibration performed with the software pyFAI followed by image integration including a flat-field, geometry, solid-angle, and polarization corrections.
 
 
@@ -82,28 +81,29 @@ We acknowledge the European Synchrotron Radiation Facility (ESRF) for provision 
 
 \kulbox[10pt]{Rietveld refinements of LaB$_6$ NIST SRM 660b standard performed in TOPAS~\cite{coelho;jac18} for characterization of the instrumental profile -- see Supporting Files for .inp file. \\
 
-LaB$_6$ NIST SRM 660b (high $Q_{res}$): $R_w=5.27$\%\ (NIST certificate 4.15689~\AA) }
+LaB$_6$ NIST SRM 660b (high $Q_{res}$): $R_w=4.21$\%\ (NIST certificate 4.15689~\AA) }
 
 The instrumental profile is defined in the standard .inp file without offset correction, as below:
 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.49\textwidth]{../../extra_files/reference_refinements/High-res_out.pdf}
+    \includegraphics[width=0.55\textwidth]{/Users/didier/ESRF_data/20240618/20240618/PROCESSED_DATA/extra_files/references_refinements/rietveld_qres.pdf}
     \caption{The results of the Rietveld refinements.}
-    \label{fig:example}
+    %\label{fig:example}
 \end{figure}
 
 
 \kulbox[10pt]{High $Q_{res}$ measurement:}
 
 \begin{quote}
-
-    \texttt{macro x\_offset\_eqtn\_1~a\_coef\_1*((Rad~2*Th)){\string^}2 + b\_coef\_1*((Rad~2*Th)) +  c\_coef\_1} \\
-    \texttt{prm~!a\_coef\_1~{-4.28975539e-06}} \\
-    \texttt{prm~!b\_coef\_1~{2.32221442e-05}} \\
-    \texttt{prm~!c\_coef\_1~0}
-            
+    {\small
+    \texttt{macro x\_offset\_eqtn\_1~a\_coef\_1*((Rad 2*Th)\^{}3) + b\_coef\_1*((Rad 2*Th)\^{}2) + c\_coef\_1*((Rad 2*Th)) +  d\_coef\_1} \\
+    \texttt{prm~!a\_coef\_1~{4.96391258e-06}} \\
+    \texttt{prm~!b\_coef\_1~{-8.05929833e-05}} \\
+    \texttt{prm~!c\_coef\_1~{0.00028542788}}\\
+    \texttt{prm~!d\_coef\_1~{0}}\\
+    
     \texttt{GeometricIntensityFactorFlat2DDetector} \\
     \texttt{ReflectionProbability} \\
     \texttt{LorentzCorrection}
@@ -112,16 +112,16 @@ The instrumental profile is defined in the standard .inp file without offset cor
     '\texttt{th2\_offset = x\_offset\_eqtn\_1;} \\
     {\color{red} {'--------} }
   
-    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm, , , 0.0052471725)} \\
-    \texttt{User\_Defined\_Dependence\_Convolution(lor\_fwhm,  , , 0.000463290013)} \\
-    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm,  Tan(Th)    , , 0.141714789)} \\
+    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm, , , 0.00504936985)} \\
+    \texttt{User\_Defined\_Dependence\_Convolution(lor\_fwhm,  , , 0.00058485611)} \\
+    \texttt{User\_Defined\_Dependence\_Convolution(gauss\_fwhm,  Tan(Th)    , , 0.081575265)} \\
     \texttt{User\_Defined\_Dependence\_Convolution(lor\_fwhm,  Tan(Th)    , , 0.0001)}  
         
     \texttt{lam} \\
     \texttt{ymin\_on\_ymax~1e-04} \\
-    \texttt{la~1~lo~!WavelengthID31~0.16531226319520955~lh~0.001} \\
+    \texttt{la~1~lo~!WavelengthID31~0.16465364860080634~lh~0.001} \\
     \texttt{convolution\_step 3}
-
+    }
 \end{quote}
 
 \newpage
